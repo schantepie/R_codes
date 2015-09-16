@@ -141,6 +141,7 @@ if(depth_ped==50)loop_family=loop
     loop_ind=loop_ind,
     loop_family=loop_family,
     depth_ped=depth_ped,
+    ancestors=loop,
     ind_damsire=ind_damsire,
     exotic_names_id=exotic_names_id,
     multiparentality=multiparent)
