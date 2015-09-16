@@ -1,8 +1,8 @@
-pedcheck<-function(Ped,names_remove=NULL,remove_punk=T,delete_space=F){
+pedcheck<-function(Ped_check,names_remove=NULL,remove_punk=T,delete_space=F){
   
   require(pedigree)
   require(MasterBayes)
-
+  
   Ped_check[,1]=as.character(Ped_check[,1])
   Ped_check[,2]=as.character(Ped_check[,2])
   Ped_check[,3]=as.character(Ped_check[,3])
