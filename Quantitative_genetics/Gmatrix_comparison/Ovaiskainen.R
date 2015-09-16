@@ -29,7 +29,7 @@ Ddivergence_ova<-function(names,nb_Gmatrix){
   sample_mod=mod[sample(nb_iter),,]  #randomize array
   
   ################# Function to get distribtion of trait and distance between densities
-  Ddivergence<-function (z = NULL, u = NULL, n = 1000) {
+  Ddivergence<-function (z = NULL, u = NULL, n = 10000) {
     xi <- rmvnorm(n, rep(0, dim(z)[1]),z)
     fx <- dmvnorm(xi, rep(0, dim(z)[1]),z)
     gx <- dmvnorm(xi, rep(0, dim(z)[1]),u)
