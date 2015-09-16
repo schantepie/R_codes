@@ -1,4 +1,4 @@
-pedcheck<-function(Ped_check,names_remove=NULL,remove_punk=T,delete_space=F){
+pedcheck<-function(Ped_check,names_remove=NULL,remove_punk=F,delete_space=F){
   
   require(pedigree)
   require(MasterBayes)
@@ -23,6 +23,7 @@ pedcheck<-function(Ped_check,names_remove=NULL,remove_punk=T,delete_space=F){
     Ped_check[,2]=gsub(" ", "", Ped_check[,2], fixed = TRUE)
     Ped_check[,3]=gsub(" ", "", Ped_check[,3], fixed = TRUE)
   }
+
   
   #----------------"delete row with "XXXX given exotic name" inside---------------------
   
@@ -38,6 +39,11 @@ pedcheck<-function(Ped_check,names_remove=NULL,remove_punk=T,delete_space=F){
   exotic_names_id=NULL
   Ped_check_line=c(as.matrix(Ped_check))
   exotic_names=unique(Ped_check_line[grep("[[:punct:]]", Ped_check_line)])
+  
+  if (remove_punk==F){
+    exotic_names_id="no names with punctuation were detected"
+    if (length(exotic_names)>0)      exotic_names_id=exotic_names 
+  }
   
   if (remove_punk==T){
     exotic_names_id="no names with punctuation were detected"
