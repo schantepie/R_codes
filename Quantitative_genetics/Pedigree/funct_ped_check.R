@@ -1,4 +1,4 @@
-pedcheck<-function(Ped_check,names_remove=NULL,remove_punk=F,delete_space=F){
+pedcheck<-function(Ped_check,names_remove=NULL,remove_punk=F,delete_space=F,data_id=NULL){
   
   require(pedigree)
   require(MasterBayes)
@@ -80,7 +80,7 @@ fam_loop<-function(id.parent,id){
 mom_loop=fam_loop(Ped_check[,3],Ped_check[,1])
 dad_loop=fam_loop(Ped_check[,2],Ped_check[,1])
 loop=list(mom_loop,dad_loop)
-depth_ped=max(dim(mom_loop$depth)[2],dim(dad_loop$depth)[2])
+depth_ped=max(dim(mom_loop$depth)[2],dim(dad_loop$depth)[2])-1
 if(depth_ped==50)loop_family=loop
 
 #-------------------get and delete birds noted as dam and sire-------------------------------------------------
@@ -119,10 +119,19 @@ if(depth_ped==50)loop_family=loop
   if(length(id_female_founder)>0){
   id_male_founder=cbind(id_male_founder,NA,NA)
   colnames(id_male_founder)=c("id","dam","sire")
-  Ped_check_allfound=rbind(Ped_check_allfound,id_female_founder)
+  Ped_check_allfound=rbind(Ped_check_allfound,id_male_founder)
   }
   
   Ped_check_allfound=Ped_check_allfound[!duplicated(Ped_check_allfound),]
+  
+  
+  #----check for similarity between data-id and ped-id (if data_id is given individuals missing are added)----------
+  
+  if (!is.null(data_id)) {
+    similar_ped_data_sire=cbind(unique(data_id[which(!(as.character(data_id)%in%Ped_check_allfound[,1]))]),"NA","NA")
+    colnames(similar_ped_data_sire)=c("id","dam","sire")
+    Ped_check_allfound=rbind(Ped_check_allfound,similar_ped_data_sire)
+  }
   
   #------------------------------------------check for multiparentality------------------------------------------
   
