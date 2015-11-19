@@ -128,7 +128,7 @@ if(depth_ped==50)loop_family=loop
   #----check for similarity between data-id and ped-id (if data_id is given individuals missing are added)----------
   
   if (!is.null(data_id)) {
-    similar_ped_data_sire=cbind(unique(data_id[which(!(as.character(data_id)%in%Ped_check_allfound[,1]))]),"NA","NA")
+    similar_ped_data_sire=cbind(unique(as.character(data_id[which(match(as.character(data_id),as.character(Ped_check_allfound[,1]),nomatch =-666)<0)])),"NA","NA")
     colnames(similar_ped_data_sire)=c("id","dam","sire")
     Ped_check_allfound=rbind(Ped_check_allfound,similar_ped_data_sire)
   }
