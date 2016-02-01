@@ -12,8 +12,9 @@ pedcheck<-function(Ped_check,names_remove=NULL,remove_punk=F,delete_space=F,data
   ind_loop=pedigree::orderPed(Ped_check)#indiv with -1 has a problem
   loop_ind="no loop with individuals"
   if(length(which(ind_loop==-1))>0){
-    Ped_check=Ped_check[-which(ind_loop==-1),]
     loop_ind=Ped_check[which(ind_loop==-1),]
+    Ped_check=Ped_check[-which(ind_loop==-1),]
+    
   }
   
   #----------------delete space in names-------------------------------------------------------------------
