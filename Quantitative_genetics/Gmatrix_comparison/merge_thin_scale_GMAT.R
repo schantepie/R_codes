@@ -1,6 +1,6 @@
 ###exemple
 
-# name="gmat"
+# name="gmat" 
 #   nb_gmat=10
 #   div_thin=2 #increase thining by div_thin factor 
 #   traits=c("LD","CS","FL") #trait to use in the raw data to perform standardisation, the file should be names data
