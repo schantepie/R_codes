@@ -161,76 +161,14 @@ krzanowski<-function(names,nb_Gmatrix,k){
 }
 
 
+krza=krzanowski("G_Age",7,1)
 
-bi=kra$di_bi
-MMb=kra$di_MMb
-nbt=kra$nb_traits
+krza$Pvalue
 
-bi=di_bi
-MMb=di_MMb
-nbt=nb_trait
-
-i=4
-seq(1,(dim(bi)[2]/nb_trait),nbt)
-i=1
-i=4
-head(b)
-head(bm)
-BM=list()
-for (i in seq(1,(dim(bi)[2]/nb_trait),nbt)){
-  b=bi[,i:(i+nbt-1)]
-  m=MMb[,i:(i+nbt-1)]
-  bm=cbind(b,m)
-  bm[which(bm[,1]<0),]=-bm[which(bm[,1]<0),]
-  inter=mcmc(bm[,1:nbt]-bm[,(nbt+1):(nbt*2)])  
-  BM[[i]]<-cbind(posterior.mode(inter),HPDinterval(inter))
-}
- trait_diff=do.call(rbind,BM)
-row.names(trait_diff)=rownames(di_bi_summa)
-
-rep(1:25,each=3)
-
-plot(di_ci)
-d=di_ci[1,4:9]
-
-
-
-
-a=di_bi[,4:6]
-b=di_MMb[,4:6]
-c= mcmc(cbind(a,b))
-
-u=di_bi-di_MMb
-
-plot(u)
-
-a=di_bi[,7:9]
-b=di_MMb[,7:9]
-c= mcmc(cbind(a,b))
-
-a=di_bi[,10:12]
-b=di_MMb[,10:12]
-c= mcmc(cbind(a,b))
-
-
-plot(a)
-plot(b)
-plot(c)
-
-for(i in 1:1000){
-  if (d[i,2]<0)
-    d[i,]=-d[i,]
-  a[i,]=-a[i,]
-  b[i,]=-b[i,]
-}
-
-for(i in 1:1000){
-  if (c[i,2]<0)
-    c[i,]=-c[i,]
-}
-
-cc=mcmc(c[,1:3]-c[,4:6])
-
-
-plot(cc)
-HPDinterval(cc)
+Dmat=matrix("--",7,7)
+Ddist=matrix(as.character(round(krza$angle_summa,2)),dim(krza$angle_summa)[1],3)
+Dmat[lower.tri(Dmat)]<-c(paste(Ddist[,1]," [",Ddist[,2],":",Ddist[,3],"]",sep=""))
+Dmat=t(Dmat)
+Dmat[lower.tri(Dmat)]<-krza$Pvalue
+Dmat=t(Dmat)
+Dmat
