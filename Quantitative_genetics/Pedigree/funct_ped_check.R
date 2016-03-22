@@ -130,8 +130,10 @@ if(depth_ped==50)loop_family=loop
   
   if (!is.null(data_id)) {
     similar_ped_data_sire=cbind(unique(as.character(data_id[which(match(as.character(data_id),as.character(Ped_check_allfound[,1]),nomatch =-666)<0)])),"NA","NA")
+    if ( !all(similar_ped_data_sire=="NA") ){ 
     colnames(similar_ped_data_sire)=c("id","dam","sire")
     Ped_check_allfound=rbind(Ped_check_allfound,similar_ped_data_sire)
+    }
   }
   
   #------------------------------------------check for multiparentality------------------------------------------
