@@ -117,7 +117,7 @@ if(depth_ped==50)loop_family=loop
   id_male_founder=as.character(Ped_check[,3])
   id_male_founder=id_male_founder[!is.na(id_male_founder)]
   id_male_founder=id_male_founder[which(match(id_male_founder,as.character(Ped_check[,1]),nomatch =-666)<0)]
-  if(length(id_female_founder)>0){
+  if(length(id_male_founder)>0){
   id_male_founder=cbind(id_male_founder,NA,NA)
   colnames(id_male_founder)=c("id","dam","sire")
   Ped_check_allfound=rbind(Ped_check_allfound,id_male_founder)
