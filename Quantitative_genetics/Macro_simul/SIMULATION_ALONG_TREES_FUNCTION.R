@@ -179,7 +179,7 @@ VCVevol_brownian<-function(nb_ind,Vm,prob_mut,loci,nb_repeat=1,cpus=1,length.bur
   sim_vcv_mat=apply(Simu_array$vcv_mat,1,function(y) array(unlist(y), dim = c(dim(y[[1]]), length(y))))
   rearrange<-function(x){
     x=do.call(rbind,x)
-    x=x[-duplicated(x),,drop=FALSE] #remove dupication intrduced in the propagation process
+    x=x[-duplicated(x),,drop=FALSE] #remove dupication introduced in the propagation process for two sister branches
     x=apply(x,2,mean)
   }
   Gmean_simul=as.matrix(do.call(rbind, lapply(apply(Simu_array$vcv_mat,2,function(x) simplify2array(x,higher=TRUE)),rearrange))[,-1])
