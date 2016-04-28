@@ -34,7 +34,7 @@ VCVevol_brownian<-function(nb_ind,Vm,prob_mut,loci,nb_repeat=1,cpus=1,length.bur
       m0=m0_start
     }
     
-    ## init random mates and random allele (no linkage) for a given length
+    ## init random mates and random allele (no linkage) sampling for a given length
    
     union_matrix=t(combn(1:nb_ind,2))
     lengh_union_matrix=dim(union_matrix)[1]
@@ -51,7 +51,7 @@ VCVevol_brownian<-function(nb_ind,Vm,prob_mut,loci,nb_repeat=1,cpus=1,length.bur
       m_fath= m0[,,drift[,1,i],]
       m_moth= m0[,,drift[,2,i],]
       
-      # for each individuals random samplind of one of the allele
+      # for each new individual random sampling of one paternal and one maternal allele
       for (ind in 1:nb_ind){
         m_fath[,sample_allele_father_mother[ind,,1,i]>1,ind,1]=m_fath[,sample_allele_father_mother[ind,,1,i]>1,ind,2]
         m0[,,ind,1]=m_fath[,,ind,1]
