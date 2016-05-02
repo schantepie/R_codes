@@ -126,41 +126,41 @@ return(list(Variance_explain_tensor=Variance_explain_tensor,
             eigenvect.proj=eigenvect.proj))
 }
 
-####### Example
-
-### load the data with "names" followed by increasing suite of number
-
-load("/media/mnhn/Leca/Gmatrix_project/5_Intra_species_variations/blue_tits/morph/blue_bosh_morph_SI_all_meanstand_OK.Rdata")
-assign(paste("Gmat_",1,sep=""),res)
-load("/media/mnhn/Leca/Gmatrix_project/5_Intra_species_variations/blue_tits/morph/blue_calix_morph_SI_all_meanstand_OK.Rdata")
-assign(paste("Gmat_",2,sep=""),res)
-load("/media/mnhn/Leca/Gmatrix_project/5_Intra_species_variations/blue_tits/morph/blue_peerd_morph_SI_all_meanstand_OK.Rdata")
-assign(paste("Gmat_",3,sep=""),res)
-load("/media/mnhn/Leca/Gmatrix_project/5_Intra_species_variations/blue_tits/morph/Blue_korst_morph_SI_all_meanstand_OK.Rdata")
-assign(paste("Gmat_",4,sep=""),res)
-load("/media/mnhn/Leca/Gmatrix_project/5_Intra_species_variations/blue_tits/morph/blue_montrouv_morph_SI_all_meanstand_OK.Rdata")
-assign(paste("Gmat_",5,sep=""),res)
-load("/media/mnhn/Leca/Gmatrix_project/5_Intra_species_variations/blue_tits/morph/blue_corsmuro_CB_morph_SI_all_meanstand_OK.Rdata")
-assign(paste("Gmat_",6,sep=""),res)
-load("/media/mnhn/Leca/Gmatrix_project/5_Intra_species_variations/blue_tits/morph/blue_corsmuro_CV_morph_SI_all_meanstand_OK.Rdata")
-assign(paste("Gmat_",7,sep=""),res)
-load("/media/mnhn/Leca/Gmatrix_project/5_Intra_species_variations/blue_tits/morph/blue_pirio_morph_SI_all_meanstand_OK.Rdata")
-assign(paste("Gmat_",8,sep=""),res)
-
-
-### set value for function
-
-nb_sample=1000
-names="Gmat_"
-names_pop=c("bosh","calix","peerd","korsten","rouviere","muroCB","muroCV","pirio")
-names_traits=c("tars","wing","mass")
-
-### run function
-bluemorph_tensor=tensor_analyse(names,nb_sample,name_traits,names_pop)
-
-
-summary(bluemorph_tensor)
-bluemorph_tensor$Variance_explain_tensor
-bluemorph_tensor$Prop_explain_by_eigen_on_tensor
-bluemorph_tensor$Summa_coordinate
-bluemorph_tensor$eigenvect.vect
+# ####### Example
+# 
+# ### load the data with "names" followed by increasing suite of number
+# 
+# load("/media/mnhn/Leca/Gmatrix_project/5_Intra_species_variations/blue_tits/morph/blue_bosh_morph_SI_all_meanstand_OK.Rdata")
+# assign(paste("Gmat_",1,sep=""),res)
+# load("/media/mnhn/Leca/Gmatrix_project/5_Intra_species_variations/blue_tits/morph/blue_calix_morph_SI_all_meanstand_OK.Rdata")
+# assign(paste("Gmat_",2,sep=""),res)
+# load("/media/mnhn/Leca/Gmatrix_project/5_Intra_species_variations/blue_tits/morph/blue_peerd_morph_SI_all_meanstand_OK.Rdata")
+# assign(paste("Gmat_",3,sep=""),res)
+# load("/media/mnhn/Leca/Gmatrix_project/5_Intra_species_variations/blue_tits/morph/Blue_korst_morph_SI_all_meanstand_OK.Rdata")
+# assign(paste("Gmat_",4,sep=""),res)
+# load("/media/mnhn/Leca/Gmatrix_project/5_Intra_species_variations/blue_tits/morph/blue_montrouv_morph_SI_all_meanstand_OK.Rdata")
+# assign(paste("Gmat_",5,sep=""),res)
+# load("/media/mnhn/Leca/Gmatrix_project/5_Intra_species_variations/blue_tits/morph/blue_corsmuro_CB_morph_SI_all_meanstand_OK.Rdata")
+# assign(paste("Gmat_",6,sep=""),res)
+# load("/media/mnhn/Leca/Gmatrix_project/5_Intra_species_variations/blue_tits/morph/blue_corsmuro_CV_morph_SI_all_meanstand_OK.Rdata")
+# assign(paste("Gmat_",7,sep=""),res)
+# load("/media/mnhn/Leca/Gmatrix_project/5_Intra_species_variations/blue_tits/morph/blue_pirio_morph_SI_all_meanstand_OK.Rdata")
+# assign(paste("Gmat_",8,sep=""),res)
+# 
+# 
+# ### set value for function
+# 
+# nb_sample=1000
+# names="Gmat_"
+# names_pop=c("bosh","calix","peerd","korsten","rouviere","muroCB","muroCV","pirio")
+# names_traits=c("tars","wing","mass")
+# 
+# ### run function
+# bluemorph_tensor=tensor_analyse(names,nb_sample,name_traits,names_pop)
+# 
+# 
+# summary(bluemorph_tensor)
+# bluemorph_tensor$Variance_explain_tensor
+# bluemorph_tensor$Prop_explain_by_eigen_on_tensor
+# bluemorph_tensor$Summa_coordinate
+# bluemorph_tensor$eigenvect.vect 
