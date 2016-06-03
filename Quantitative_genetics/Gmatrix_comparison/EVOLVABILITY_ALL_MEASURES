@@ -19,10 +19,11 @@ Evolvability_all <- function(names,nb_pop,names_pop,cpus=1,simu=TRUE,analytic=TR
   
 for(i in 1:nb_pop){
   gmat=get(paste(names,i,sep=""))
+  numtr=sqrt(dim(gmat)[2])
+  
 ############# estimation with beta
 if(simu==TRUE) {
 
-numtr=sqrt(dim(gmat)[2])
 trial=1000
 beta = matrix(rnorm(trial*numtr), nrow = numtr)
 beta = t(beta)/sqrt(colSums(beta^2)) 
