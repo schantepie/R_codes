@@ -56,7 +56,7 @@ dimnames(Cond_Evolvability)=list(names_pop,c("mode","lower","upper"))
 
 respond<-function(x) {
   G=matrix(x,numtr,numtr)
-  G2=G^2
+  G2=G%*%G
   mean(apply(beta_positive,1,function(x) {sqrt((t(x)%*%G2%*%x))}))
 }
 
