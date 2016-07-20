@@ -26,7 +26,7 @@ for (s in 1:nb_sample){
     model=get(paste(names,i,sep=''))
     model=model$VCV
     model=model[,grep (".animal",colnames(model))]
-    pG_Ani[,,i,s]=matrix(model,ncol=nb_trait)[s,]
+    pG_Ani[,,i,s]=matrix(model[s,],ncol=nb_trait)
     }else{
     pG_Ani[,,i,s]=matrix(get(paste(names,i,sep=''))[s,],ncol=nb_trait) #remplacer par nom de sorti adéquate
     }
