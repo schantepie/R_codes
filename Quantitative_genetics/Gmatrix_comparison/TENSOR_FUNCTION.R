@@ -46,7 +46,7 @@ postmod=function(x){posterior.mode(mcmc(x))}
 Smean <- apply(S_mat, 1:2, postmod)
 #Smean <- apply(S_mat, 1:2, mean) #utilisation de mean a la place du mode
 Smean_eig_values=eigen(Smean)$values[1:nb_tensor]
-Smean_eig_vector=eigen(Smean)$vectors[,1:nb_tensor]
+Smean_eig_vector=eigen(Smean)$vectors[,1:nb_tensor,drop=FALSE]
 Smean_eig_values_mcmc=mcmc(t(apply(S_mat,3,function(x) diag(t(Smean_eig_vector[,1:nb_tensor])%*%x%*%Smean_eig_vector[,1:nb_tensor]))))
 
 #############################################################
