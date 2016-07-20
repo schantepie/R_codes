@@ -1,6 +1,6 @@
 
 
-tensor_analyse<-function(names,nb_sample,name_traits,names_pop,allresults=FALSE){
+tensor_analyse<-function(names,nb_sample,names_traits,names_pop,allresults=FALSE){
 require(MCMCglmm)
 require(matrixcalc)
 nb_trait=length(names_traits)
@@ -23,10 +23,10 @@ for (s in 1:nb_sample){
   #cration matrice  G par ligne de sample MCMC (n sample = smax)
   for (i in 1:nb_pop){#5 time période
   if(allresults==TRUE){
-    model=get(paste(names,i,sep=''))[s,]
+    model=get(paste(names,i,sep=''))
     model=model$VCV
     model=model[,grep (".animal",colnames(model))]
-    pG_Ani[,,i,s]=matrix(model,ncol=nb_trait)
+    pG_Ani[,,i,s]=matrix(model,ncol=nb_trait)[s,]
     }else{
     pG_Ani[,,i,s]=matrix(get(paste(names,i,sep=''))[s,],ncol=nb_trait) #remplacer par nom de sorti adéquate
     }
