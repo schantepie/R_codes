@@ -46,7 +46,7 @@ postmod=function(x){posterior.mode(mcmc(x))}
 Smean <- apply(S_mat, 1:2, postmod)
 #Smean <- apply(S_mat, 1:2, mean) #utilisation de mean a la place du mode
 Smean_eig_values=eigen(Smean)$values[1:nb_tensor]
-Smean_eig_vector=eigen(Smean)$vectors[,1:nb_tensor,drop=FALSE]
+Smean_eig_vector=eigen(Smean)$vectors[,1:nb_tensor]
 Smean_eig_values_mcmc=mcmc(t(apply(S_mat,3,function(x) diag(t(Smean_eig_vector[,1:nb_tensor])%*%x%*%Smean_eig_vector[,1:nb_tensor]))))
 
 #############################################################
@@ -117,7 +117,7 @@ eigenvect.proj=array(NA,c(nb_pop,3,nb_trait,nb_tensor))
 
 for (i in 1:nb_tensor){
   for (j in 1:nb_trait){
-  project=mcmc(t(apply(pG_Ani, 3:4, proj , b = Etens_valvec[2:4,j,i])))
+  project=mcmc(t(apply(pG_Ani, 3:4, proj ,  b = Etens_valvec[2:(nb_trait+1),j,i])))
   project=cbind(posterior.mode(mcmc(project)),HPDinterval(mcmc(project)))
   eigenvect.proj[,,j,i]=project
   }
